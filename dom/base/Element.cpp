@@ -2607,8 +2607,6 @@ Element::SetAttrAndNotify(int32_t aNamespaceID,
     }
   }
 
-  UpdateState(aNotify);
-
   if (CustomElementRegistry::IsCustomElementEnabled()) {
     if (CustomElementData* data = GetCustomElementData()) {
       if (CustomElementDefinition* definition =
@@ -2646,6 +2644,8 @@ Element::SetAttrAndNotify(int32_t aNamespaceID,
                    hadValidDir, hadDirAuto, aNotify);
     }
   }
+
+  UpdateState(aNotify);
 
   if (aNotify) {
     // Don't pass aOldValue to AttributeChanged since it may not be reliable.
@@ -2858,8 +2858,6 @@ Element::UnsetAttr(int32_t aNameSpaceID, nsIAtom* aName,
     }
   }
 
-  UpdateState(aNotify);
-
   if (CustomElementRegistry::IsCustomElementEnabled()) {
     if (CustomElementData* data = GetCustomElementData()) {
       if (CustomElementDefinition* definition =
@@ -2886,15 +2884,17 @@ Element::UnsetAttr(int32_t aNameSpaceID, nsIAtom* aName,
     }
   }
 
+  rv = AfterSetAttr(aNameSpaceID, aName, nullptr, aNotify);
+  NS_ENSURE_SUCCESS(rv, rv);
+
+  UpdateState(aNotify);
+
   if (aNotify) {
     // We can always pass oldValue here since there is no new value which could
     // have corrupted it.
     nsNodeUtils::AttributeChanged(this, aNameSpaceID, aName,
                                   nsIDOMMutationEvent::REMOVAL, &oldValue);
   }
-
-  rv = AfterSetAttr(aNameSpaceID, aName, nullptr, aNotify);
-  NS_ENSURE_SUCCESS(rv, rv);
 
   if (aNameSpaceID == kNameSpaceID_None && aName == nsGkAtoms::dir) {
     OnSetDirAttr(this, nullptr, hadValidDir, hadDirAuto, aNotify);
