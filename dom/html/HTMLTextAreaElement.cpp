@@ -506,7 +506,7 @@ HTMLTextAreaElement::IsDisabledForEvents(EventMessage aMessage)
 }
 
 nsresult
-HTMLTextAreaElement::PreHandleEvent(EventChainPreVisitor& aVisitor)
+HTMLTextAreaElement::GetEventTargetParent(EventChainPreVisitor& aVisitor)
 {
   aVisitor.mCanHandle = false;
   if (IsDisabledForEvents(aVisitor.mEvent->mMessage)) {
@@ -539,7 +539,7 @@ HTMLTextAreaElement::PreHandleEvent(EventChainPreVisitor& aVisitor)
     FireChangeEventIfNeeded();
   }
 
-  return nsGenericHTMLFormElementWithState::PreHandleEvent(aVisitor);
+  return nsGenericHTMLFormElementWithState::GetEventTargetParent(aVisitor);
 }
 
 void
