@@ -591,7 +591,7 @@ public:
    * guaranteed (e.g. we could have class="").
    */
   const nsAttrValue* GetClasses() const {
-    if (HasFlag(NODE_MAY_HAVE_CLASS)) {
+    if (MayHaveClass()) {
       return DoGetClasses();
     }
     return nullptr;
