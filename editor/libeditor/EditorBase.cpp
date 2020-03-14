@@ -2619,8 +2619,7 @@ EditorBase::NotifyDocumentListeners(
     return NS_OK;
   }
 
-  nsTArray<OwningNonNull<nsIDocumentStateListener>>
-    listeners(mDocStateListeners);
+  AutoDocumentStateListenerArray listeners(mDocStateListeners);
   nsresult rv = NS_OK;
 
   switch (aNotificationType) {
