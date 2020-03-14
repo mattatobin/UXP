@@ -987,7 +987,9 @@ protected:
   RefPtr<TextComposition> mComposition;
 
   // Listens to all low level actions on the doc.
-  nsTArray<OwningNonNull<nsIEditActionListener>> mActionListeners;
+  typedef AutoTArray<OwningNonNull<nsIEditActionListener>, 5>
+            AutoActionListenerArray;
+  AutoActionListenerArray mActionListeners;
   // Just notify once per high level change.
   nsTArray<OwningNonNull<nsIEditorObserver>> mEditorObservers;
   // Listen to overall doc state (dirty or not, just created, etc.).
