@@ -2083,6 +2083,18 @@ nsGenericHTMLFormElement::AfterSetAttr(int32_t aNameSpaceID, nsIAtom* aName,
 nsresult
 nsGenericHTMLFormElement::GetEventTargetParent(EventChainPreVisitor& aVisitor)
 {
+  if (aVisitor.mEvent->IsTrusted() && (aVisitor.mEvent->mMessage == eFocus ||
+                                       aVisitor.mEvent->mMessage == eBlur)) {
+    // We have to handle focus/blur event to change focus states in
+    // PreHandleEvent to prevent it breaks event target chain creation.
+    aVisitor.mWantsPreHandleEvent = true;
+  }
+  return nsGenericHTMLElement::GetEventTargetParent(aVisitor);
+}
+
+nsresult
+nsGenericHTMLFormElement::PreHandleEvent(EventChainVisitor& aVisitor)
+{
   if (aVisitor.mEvent->IsTrusted()) {
     switch (aVisitor.mEvent->mMessage) {
       case eFocus: {
@@ -2105,8 +2117,7 @@ nsGenericHTMLFormElement::GetEventTargetParent(EventChainPreVisitor& aVisitor)
         break;
     }
   }
-
-  return nsGenericHTMLElement::GetEventTargetParent(aVisitor);
+  return nsGenericHTMLElement::PreHandleEvent(aVisitor);
 }
 
 void

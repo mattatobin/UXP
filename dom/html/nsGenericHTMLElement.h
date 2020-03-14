@@ -1222,6 +1222,8 @@ public:
 
   virtual nsresult GetEventTargetParent(
                      mozilla::EventChainPreVisitor& aVisitor) override;
+  virtual nsresult PreHandleEvent(
+                     mozilla::EventChainVisitor& aVisitor) override;
 
   /**
    * This callback is called by a fieldest on all its elements whenever its
