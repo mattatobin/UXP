@@ -1874,7 +1874,7 @@ void
 EditorBase::NotifyEditorObservers(NotificationForEditorObservers aNotification)
 {
   // Copy the observers since EditAction()s can modify mEditorObservers.
-  nsTArray<mozilla::OwningNonNull<nsIEditorObserver>> observers(mEditorObservers);
+  AutoEditorObserverArray observers(mEditorObservers);
   switch (aNotification) {
     case eNotifyEditorObserversOfEnd:
       mIsInEditAction = false;
