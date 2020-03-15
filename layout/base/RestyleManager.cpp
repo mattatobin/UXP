@@ -246,14 +246,14 @@ ElementForStyleContext(nsIContent* aParentContent,
 
 // Forwarded nsIDocumentObserver method, to handle restyling (and
 // passing the notification to the frame).
-nsresult
+void
 RestyleManager::ContentStateChanged(nsIContent* aContent,
                                     EventStates aStateMask)
 {
   // XXXbz it would be good if this function only took Elements, but
   // we'd have to make ESM guarantee that usefully.
   if (!aContent->IsElement()) {
-    return NS_OK;
+    return;
   }
 
   Element* aElement = aContent->AsElement();
@@ -263,7 +263,6 @@ RestyleManager::ContentStateChanged(nsIContent* aContent,
   ContentStateChangedInternal(aElement, aStateMask, &changeHint, &restyleHint);
 
   PostRestyleEvent(aElement, restyleHint, changeHint);
-  return NS_OK;
 }
 
 // Forwarded nsIMutationObserver method, to handle restyling.
