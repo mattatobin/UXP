@@ -1829,7 +1829,7 @@ ElementRestyler::ConditionallyRestyleUndisplayedNodes(
   }
 
   for (UndisplayedNode* undisplayed = aUndisplayed; undisplayed;
-       undisplayed = undisplayed->mNext) {
+       undisplayed = undisplayed->getNext()) {
 
     if (!undisplayed->mContent->IsElement()) {
       continue;
@@ -3470,7 +3470,7 @@ ElementRestyler::RestyleUndisplayedNodes(nsRestyleHint      aChildRestyleHint,
   if (undisplayed) {
     pusher.PushAncestorAndStyleScope(undisplayedParent);
   }
-  for (; undisplayed; undisplayed = undisplayed->mNext) {
+  for (; undisplayed; undisplayed = undisplayed->getNext()) {
     NS_ASSERTION(undisplayedParent ||
                  undisplayed->mContent ==
                    mPresContext->Document()->GetRootElement(),
