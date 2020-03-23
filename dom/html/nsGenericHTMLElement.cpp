@@ -721,14 +721,10 @@ nsGenericHTMLElement::AfterSetAttr(int32_t aNamespaceID, nsIAtom* aName,
         dirStates |= NS_EVENT_STATE_HAS_DIR_ATTR;
         Directionality dirValue = (Directionality)aValue->GetEnumValue();
         if (dirValue == eDir_Auto) {
-          SetHasDirAuto();
           dirStates |= NS_EVENT_STATE_DIR_ATTR_LIKE_AUTO;
-          ClearHasFixedDir();
         } else {
           dir = dirValue;
           SetDirectionality(dir, aNotify);
-          ClearHasDirAuto();
-          SetHasFixedDir();
           if (dirValue == eDir_LTR) {
             dirStates |= NS_EVENT_STATE_DIR_ATTR_LTR;
           } else {
@@ -742,12 +738,9 @@ nsGenericHTMLElement::AfterSetAttr(int32_t aNamespaceID, nsIAtom* aName,
           dirStates |= NS_EVENT_STATE_HAS_DIR_ATTR;
         }
         ClearHasValidDir();
-        ClearHasFixedDir();
         if (NodeInfo()->Equals(nsGkAtoms::bdi)) {
-          SetHasDirAuto();
           dirStates |= NS_EVENT_STATE_DIR_ATTR_LIKE_AUTO;
         } else {
-          ClearHasDirAuto();
           recomputeDirectionality = true;
         }
       }
