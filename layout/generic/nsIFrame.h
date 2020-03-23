@@ -82,6 +82,7 @@ class nsLineList_iterator;
 class nsAbsoluteContainingBlock;
 class nsIContent;
 class nsContainerFrame;
+class nsPlaceholderFrame;
 
 struct nsPeekOffsetStruct;
 struct nsPoint;
@@ -1046,6 +1047,8 @@ public:
                                       DestroyContentArray)
 
   NS_DECLARE_FRAME_PROPERTY_SMALL_VALUE(BidiDataProperty, mozilla::FrameBidiData)
+
+  NS_DECLARE_FRAME_PROPERTY_WITHOUT_DTOR(PlaceholderFrameProperty, nsPlaceholderFrame)
 
   mozilla::FrameBidiData GetBidiData()
   {
