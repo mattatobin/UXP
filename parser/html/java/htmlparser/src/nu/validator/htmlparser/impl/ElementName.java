@@ -2167,6 +2167,10 @@ public final class ElementName
     // CPPONLY: NS_NewHTMLSelectElement,
     // CPPONLY: NS_NewSVGUnknownElement, 
     TreeBuilder.SELECT | SPECIAL);
+    public static final ElementName SLOT = new ElementName("slot", "slot", 
+    // CPPONLY: NS_NewHTMLSlotElement,
+    // CPPONLY: NS_NewSVGUnknownElement, 
+    TreeBuilder.OTHER);
     public static final ElementName SCALARPRODUCT = new ElementName("scalarproduct", "scalarproduct", 
     // CPPONLY: NS_NewHTMLUnknownElement,
     // CPPONLY: NS_NewSVGUnknownElement, 
@@ -2510,6 +2514,7 @@ public final class ElementName
     QUOTIENT,
     RADIALGRADIENT,
     SELECT,
+    SLOT,
     SUBSET,
     TFOOT,
     UPLIMIT,

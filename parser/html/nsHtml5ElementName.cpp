@@ -461,6 +461,7 @@ nsHtml5ElementName* nsHtml5ElementName::ELT_RECT = nullptr;
 nsHtml5ElementName* nsHtml5ElementName::ELT_RADIALGRADIENT = nullptr;
 nsHtml5ElementName* nsHtml5ElementName::ELT_ROOT = nullptr;
 nsHtml5ElementName* nsHtml5ElementName::ELT_SELECT = nullptr;
+nsHtml5ElementName* nsHtml5ElementName::ELT_SLOT = nullptr;
 nsHtml5ElementName* nsHtml5ElementName::ELT_SCALARPRODUCT = nullptr;
 nsHtml5ElementName* nsHtml5ElementName::ELT_SUBSET = nullptr;
 nsHtml5ElementName* nsHtml5ElementName::ELT_SCRIPT = nullptr;
@@ -868,6 +869,7 @@ nsHtml5ElementName::initializeStatics()
   ELT_RADIALGRADIENT = new nsHtml5ElementName(nsHtml5Atoms::radialgradient, nsHtml5Atoms::radialGradient, NS_NewHTMLUnknownElement, NS_NewSVGRadialGradientElement, nsHtml5TreeBuilder::OTHER);
   ELT_ROOT = new nsHtml5ElementName(nsHtml5Atoms::root, nsHtml5Atoms::root, NS_NewHTMLUnknownElement, NS_NewSVGUnknownElement, nsHtml5TreeBuilder::OTHER);
   ELT_SELECT = new nsHtml5ElementName(nsHtml5Atoms::select, nsHtml5Atoms::select, NS_NewHTMLSelectElement, NS_NewSVGUnknownElement, nsHtml5TreeBuilder::SELECT | SPECIAL);
+  ELT_SLOT = new nsHtml5ElementName(nsHtml5Atoms::slot, nsHtml5Atoms::slot, NS_NewHTMLSlotElement, NS_NewSVGUnknownElement, nsHtml5TreeBuilder::OTHER);
   ELT_SCALARPRODUCT = new nsHtml5ElementName(nsHtml5Atoms::scalarproduct, nsHtml5Atoms::scalarproduct, NS_NewHTMLUnknownElement, NS_NewSVGUnknownElement, nsHtml5TreeBuilder::OTHER);
   ELT_SUBSET = new nsHtml5ElementName(nsHtml5Atoms::subset, nsHtml5Atoms::subset, NS_NewHTMLUnknownElement, NS_NewSVGUnknownElement, nsHtml5TreeBuilder::OTHER);
   ELT_SCRIPT = new nsHtml5ElementName(nsHtml5Atoms::script, nsHtml5Atoms::script, NS_NewHTMLScriptElement, NS_NewSVGScriptElement, nsHtml5TreeBuilder::SCRIPT | SPECIAL);
