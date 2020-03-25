@@ -252,6 +252,24 @@ ShadowRoot::RemoveDestInsertionPoint(nsIContent* aInsertionPoint,
 }
 
 void
+ShadowRoot::DistributionChanged()
+{
+  // FIXME(emilio): We could be more granular in a bunch of cases.
+  auto* host = GetHost();
+  if (!host) {
+    return;
+  }
+
+  auto* shell = OwnerDoc()->GetShell();
+  if (!shell) {
+    return;
+  }
+
+  // FIXME(emilio): Rename this to DestroyFramesForAndRestyle?
+  shell->DestroyFramesFor(host);
+}
+
+void
 ShadowRoot::DistributeSingleNode(nsIContent* aContent)
 {
   // Find the insertion point to which the content belongs.
@@ -312,6 +330,8 @@ ShadowRoot::DistributeSingleNode(nsIContent* aContent)
   if (auto* parentShadow = foundInsertionPoint->GetParent()->GetShadowRoot()) {
     parentShadow->DistributeSingleNode(aContent);
   }
+
+  DistributionChanged();
 }
 
 void
@@ -341,6 +361,8 @@ ShadowRoot::RemoveDistributedNode(nsIContent* aContent)
     if (auto* parentShadow = insertionPoint->GetParent()->GetShadowRoot()) {
       parentShadow->RemoveDistributedNode(aContent);
     }
+
+    DistributionChanged();
     return;
   }
 }
@@ -387,6 +409,8 @@ ShadowRoot::DistributeAllNodes()
   for (ShadowRoot* shadow : shadowsToUpdate) {
     shadow->DistributeAllNodes();
   }
+
+  DistributionChanged();
 }
 
 void
