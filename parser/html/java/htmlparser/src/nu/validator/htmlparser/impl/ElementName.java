@@ -2215,10 +2215,6 @@ public final class ElementName
     // CPPONLY: NS_NewHTMLUnknownElement,
     // CPPONLY: NS_NewSVGUnknownElement, 
     TreeBuilder.OTHER);
-    public static final ElementName SHADOW = new ElementName("shadow", "shadow", 
-    // CPPONLY: NS_NewHTMLShadowElement,
-    // CPPONLY: NS_NewSVGUnknownElement, 
-    TreeBuilder.OTHER);
     public static final ElementName VIEW = new ElementName("view", "view", 
     // CPPONLY: NS_NewHTMLUnknownElement,
     // CPPONLY: NS_NewSVGViewElement, 
@@ -2519,7 +2515,6 @@ public final class ElementName
     VECTORPRODUCT,
     SDEV,
     MROW,
-    SHADOW,
     APPROX,
     FECONVOLVEMATRIX,
     MATRIX,

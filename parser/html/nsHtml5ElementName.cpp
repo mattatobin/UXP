@@ -473,7 +473,6 @@ nsHtml5ElementName* nsHtml5ElementName::ELT_SDEV = nullptr;
 nsHtml5ElementName* nsHtml5ElementName::ELT_FEDROPSHADOW = nullptr;
 nsHtml5ElementName* nsHtml5ElementName::ELT_MROW = nullptr;
 nsHtml5ElementName* nsHtml5ElementName::ELT_MATRIXROW = nullptr;
-nsHtml5ElementName* nsHtml5ElementName::ELT_SHADOW = nullptr;
 nsHtml5ElementName* nsHtml5ElementName::ELT_VIEW = nullptr;
 nsHtml5ElementName* nsHtml5ElementName::ELT_APPROX = nullptr;
 nsHtml5ElementName* nsHtml5ElementName::ELT_FECOLORMATRIX = nullptr;
