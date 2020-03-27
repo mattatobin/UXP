@@ -1987,10 +1987,6 @@ public final class ElementName
     // CPPONLY: NS_NewHTMLUnknownElement,
     // CPPONLY: NS_NewSVGUnknownElement, 
     TreeBuilder.OTHER);
-    public static final ElementName CONTENT = new ElementName("content", "content", 
-    // CPPONLY: NS_NewHTMLContentElement,
-    // CPPONLY: NS_NewSVGUnknownElement, 
-    TreeBuilder.OTHER);
     public static final ElementName GT = new ElementName("gt", "gt", 
     // CPPONLY: NS_NewHTMLUnknownElement,
     // CPPONLY: NS_NewSVGUnknownElement, 
@@ -2298,7 +2294,6 @@ public final class ElementName
     BR,
     POWER,
     MMULTISCRIPTS,
-    CONTENT,
     INTERSECT,
     RT,
     SCRIPT,

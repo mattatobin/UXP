@@ -416,7 +416,6 @@ nsHtml5ElementName* nsHtml5ElementName::ELT_APPLET = nullptr;
 nsHtml5ElementName* nsHtml5ElementName::ELT_ARCCOT = nullptr;
 nsHtml5ElementName* nsHtml5ElementName::ELT_BASEFONT = nullptr;
 nsHtml5ElementName* nsHtml5ElementName::ELT_CARTESIANPRODUCT = nullptr;
-nsHtml5ElementName* nsHtml5ElementName::ELT_CONTENT = nullptr;
 nsHtml5ElementName* nsHtml5ElementName::ELT_GT = nullptr;
 nsHtml5ElementName* nsHtml5ElementName::ELT_DETERMINANT = nullptr;
 nsHtml5ElementName* nsHtml5ElementName::ELT_DATALIST = nullptr;
@@ -824,7 +823,6 @@ nsHtml5ElementName::initializeStatics()
   ELT_ARCCOT = new nsHtml5ElementName(nsHtml5Atoms::arccot, nsHtml5Atoms::arccot, NS_NewHTMLUnknownElement, NS_NewSVGUnknownElement, nsHtml5TreeBuilder::OTHER);
   ELT_BASEFONT = new nsHtml5ElementName(nsHtml5Atoms::basefont, nsHtml5Atoms::basefont, NS_NewHTMLElement, NS_NewSVGUnknownElement, nsHtml5TreeBuilder::LINK_OR_BASEFONT_OR_BGSOUND | SPECIAL);
   ELT_CARTESIANPRODUCT = new nsHtml5ElementName(nsHtml5Atoms::cartesianproduct, nsHtml5Atoms::cartesianproduct, NS_NewHTMLUnknownElement, NS_NewSVGUnknownElement, nsHtml5TreeBuilder::OTHER);
-  ELT_CONTENT = new nsHtml5ElementName(nsHtml5Atoms::content, nsHtml5Atoms::content, NS_NewHTMLContentElement, NS_NewSVGUnknownElement, nsHtml5TreeBuilder::OTHER);
   ELT_GT = new nsHtml5ElementName(nsHtml5Atoms::gt, nsHtml5Atoms::gt, NS_NewHTMLUnknownElement, NS_NewSVGUnknownElement, nsHtml5TreeBuilder::OTHER);
   ELT_DETERMINANT = new nsHtml5ElementName(nsHtml5Atoms::determinant, nsHtml5Atoms::determinant, NS_NewHTMLUnknownElement, NS_NewSVGUnknownElement, nsHtml5TreeBuilder::OTHER);
   ELT_DATALIST = new nsHtml5ElementName(nsHtml5Atoms::datalist, nsHtml5Atoms::datalist, NS_NewHTMLDataListElement, NS_NewSVGUnknownElement, nsHtml5TreeBuilder::OTHER);
@@ -922,7 +920,6 @@ nsHtml5ElementName::initializeStatics()
   ELEMENT_NAMES[23] = ELT_BR;
   ELEMENT_NAMES[24] = ELT_POWER;
   ELEMENT_NAMES[25] = ELT_MMULTISCRIPTS;
-  ELEMENT_NAMES[26] = ELT_CONTENT;
   ELEMENT_NAMES[27] = ELT_INTERSECT;
   ELEMENT_NAMES[28] = ELT_RT;
   ELEMENT_NAMES[29] = ELT_SCRIPT;
@@ -1633,7 +1630,6 @@ nsHtml5ElementName::releaseStatics()
   delete ELT_ARCCOT;
   delete ELT_BASEFONT;
   delete ELT_CARTESIANPRODUCT;
-  delete ELT_CONTENT;
   delete ELT_GT;
   delete ELT_DETERMINANT;
   delete ELT_DATALIST;
