@@ -7031,11 +7031,8 @@ nsCSSFrameConstructor::MaybeConstructLazily(Operation aOperation,
                                             nsIContent* aContainer,
                                             nsIContent* aChild)
 {
-  // XXXmats no lazy frames for display:contents direct descendants yet
-  // (Mozilla bug 979782).
   if (mPresShell->GetPresContext()->IsChrome() || !aContainer ||
-      aContainer->IsInNativeAnonymousSubtree() || aContainer->IsXULElement() ||
-      GetDisplayContentsStyleFor(aContainer)) {
+      aContainer->IsInNativeAnonymousSubtree() || aContainer->IsXULElement()) {
     return false;
   }
 
@@ -7071,8 +7068,7 @@ nsCSSFrameConstructor::MaybeConstructLazily(Operation aOperation,
   // hit a node with a leaf frame.
   //
   // Also, it's fine if one of the nodes without primary frame is a display:
-  // contents node except if it's the direct ancestor of the children we're
-  // recreating frames for.
+  // contents node.
   bool noPrimaryFrame = false;
   bool needsFrameBitSet = false;
 #endif
